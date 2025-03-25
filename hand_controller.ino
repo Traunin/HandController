@@ -1,31 +1,34 @@
 #include <Servo.h>
 
+#define MIN1 0
+#define MAX1 180
+#define MIN2 0
+#define MAX2 180
 
-#define MIN 90
-#define MAX 180
-Servo servo;
-int incomingByte = 0;
-
+Servo servo1;
+Servo servo2;
 
 void setup() {
-  // put your setup code here, to run once:
-  servo.attach(3);
+  servo1.attach(3);
+  servo2.attach(5);
   Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-//  servo.write(MIN);
-//  delay(1000);
-//  servo.write(MAX);
-//  delay(1000);
-
     if (Serial.available()) {
-        int number = Serial.parseInt(); // Read an integer
-        if (number >= MIN and number <= MAX) {
-          Serial.print("Received number: ");
-          Serial.println(number);
-          servo.write(number);
+        int number1 = Serial.parseInt();
+        int number2 = Serial.parseInt();
+//        Serial.println("Read");
+        if (number1 >= MIN1 && number1 <= MAX1) {
+//          Serial.print("Servo 1: ");
+//          Serial.println(number1);
+          servo1.write(number1);
+        }
+
+        if (number2 >= MIN2 && number2 <= MAX2) {
+//          Serial.print("Servo 2: ");
+//          Serial.println(number2);
+          servo2.write(number2);
         }
     }
 }
