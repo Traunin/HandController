@@ -5,20 +5,24 @@
 #define MIN2 60
 #define MAX2 120
 #define LOG_DELAY 100
-#define IDLE_RESISTANCE 775
+#define K 0.5
 
 Servo servo1;
 Servo servo2;
 Servo tactile;
 
-long last_log = 0;
+long lastLog = 0;
 long current = 0;
+
+float baseline;
+int tactileStrength = 0;
 
 void setup() {
   servo1.attach(3);
   servo2.attach(5);
   tactile.attach(6);
   pinMode(A7, INPUT);
+  baseline = analogRead(A7);
   Serial.begin(9600);
 }
 
@@ -41,16 +45,20 @@ void loop() {
     }
 
     current = millis();
-    if (current - last_log > LOG_DELAY) {
-      last_log = millis();
+    if (current - lastLog > LOG_DELAY) {
+      lastLog = current;
       updateTactile(analogRead(A7));
     }
 }
 
 void updateTactile(int inp) {
-  Serial.println(inp);
-  float diff = ((float) abs(inp - IDLE_RESISTANCE)) / 50.0;
-  int angle = min(90, max(0, (int) (diff * 90)));
-//  Serial.println(angle);
-  tactile.write(angle);
+  Serial.print(inp); Serial.print(" ");
+  float diff = inp - baseline;
+  baseline += diff * K;
+  if (abs(diff) > 5) {
+      tactileStrength = min(max(tactileStrength - (int) (diff / 2), 0), 90);
+      Serial.print(tactileStrength);
+      tactile.write(tactileStrength);
+  }
+  Serial.println();
 }
