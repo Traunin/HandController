@@ -1,9 +1,9 @@
 #include <Servo.h>
 
-#define MIN1 70
-#define MAX1 150
-#define MIN2 40
-#define MAX2 110
+#define MIN1 60
+#define MAX1 120
+#define MIN2 60
+#define MAX2 120
 
 Servo servo1;
 Servo servo2;
