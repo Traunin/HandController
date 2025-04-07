@@ -4,13 +4,18 @@
 #define MAX1 120
 #define MIN2 60
 #define MAX2 120
+#define LOG_DELAY 50
 
 Servo servo1;
 Servo servo2;
 
+long last_log = 0;
+long current = 0;
+
 void setup() {
   servo1.attach(3);
   servo2.attach(5);
+  pinMode(A7, INPUT);
   Serial.begin(9600);
 }
 
@@ -30,5 +35,11 @@ void loop() {
 //          Serial.println(number2);
           servo2.write(number2);
         }
+    }
+
+    current = millis();
+    if (current - last_log > LOG_DELAY) {
+      last_log = millis();
+      Serial.println(analogRead(A7));
     }
 }
