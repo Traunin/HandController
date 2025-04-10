@@ -4,11 +4,14 @@
 #define MAX1 120
 #define MIN2 60
 #define MAX2 120
+#define MIN3 90
+#define MAX3 160
 #define LOG_DELAY 100
 #define K 0.5
 
 Servo servo1;
 Servo servo2;
+Servo servo3;
 Servo tactile;
 
 long lastLog = 0;
@@ -21,6 +24,7 @@ void setup() {
   servo1.attach(3);
   servo2.attach(5);
   tactile.attach(6);
+  servo3.attach(9);
   pinMode(A7, INPUT);
   baseline = analogRead(A7);
   Serial.begin(9600);
@@ -30,6 +34,7 @@ void loop() {
     if (Serial.available()) {
         int number1 = Serial.parseInt();
         int number2 = Serial.parseInt();
+        int number3 = Serial.parseInt();
 //        Serial.println("Read");
         if (number1 >= MIN1 && number1 <= MAX1) {
 //          Serial.print("Servo 1: ");
@@ -41,6 +46,12 @@ void loop() {
 //          Serial.print("Servo 2: ");
 //          Serial.println(number2);
           servo2.write(number2);
+        }
+
+        if (number3 >= MIN3 && number3 <= MAX3) {
+//          Serial.print("Servo 3: ");
+//          Serial.println(number2);
+          servo3.write(number3);
         }
     }
 
