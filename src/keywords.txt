@@ -1,0 +1,9 @@
+Finger     KEYWORD1
+
+attachBend     KEYWORD2
+attachForce    KEYWORD2
+attachTactile  KEYWORD2
+setBend        KEYWORD2
+getBend        KEYWORD2
+getForce       KEYWORD2
+tick           KEYWORD2
