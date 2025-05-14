@@ -65,11 +65,11 @@ void Hand::logBend() {
 void Hand::logForce() {
     for (int i = 0; i < count; i++) {
         if (fingers[i]) {
-            int force = fingers[i]->getForce()
+            int force = fingers[i]->getForce();
             if (force >= 0) {
                 Serial.print(force);
             } else {
-                Serial.print("no force sensor")
+                Serial.print("no force sensor");
             }
         } else {
             Serial.print("no finger");
