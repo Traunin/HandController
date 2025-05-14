@@ -11,8 +11,8 @@ void setup() {
   finger2.attachBend(A6);
   finger3.attachBend(A5);
   finger1.attachForce(A4);
-  finger1.attachForce(A3);
-  finger1.attachForce(A2);
+  finger2.attachForce(A3);
+  finger3.attachForce(A2);
   
   hand.setFinger(0, &finger1);
   hand.setFinger(1, &finger2);
