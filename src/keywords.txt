@@ -1,4 +1,5 @@
 Finger     KEYWORD1
+Hand       KEYWORD1
 
 attachBend     KEYWORD2
 attachForce    KEYWORD2
@@ -7,3 +8,9 @@ setBend        KEYWORD2
 getBend        KEYWORD2
 getForce       KEYWORD2
 tick           KEYWORD2
+getFinger      KEYWORD2
+setFinger      KEYWORD2
+setAll         KEYWORD2
+setFromSerial  KEYWORD2
+logForce       KEYWORD2
+logBend        KEYWORD2
