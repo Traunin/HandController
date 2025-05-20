@@ -1,4 +1,4 @@
-#include <Finger.h>
+#include <HandController.h>
 #include <Arduino.h>
 
 #define FINGER_SERVO 3
@@ -9,9 +9,12 @@
 #define FORCE_PIN A4
 
 // initializing a finger
-Finger finger(FINGER_SERVO, MIN_ANGLE, MAX_ANGLE);
+Finger* finger;
+
 
 void setup() {
+  // attach finger servo
+  finger = new Finger(FINGER_SERVO, MIN_ANGLE, MAX_ANGLE);
   // bend sensor
   finger.attachBend(BEND_PIN);
   // tactile servo

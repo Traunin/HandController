@@ -1,4 +1,4 @@
-#include <Hand.h>
+#include <HandController.h>
 
 // pin, open angle, closed angle
 Finger* finger1;

@@ -1,4 +1,4 @@
-#include "Hand.h"
+#include "HandController.h"
 #include <Arduino.h>
 
 Hand::Hand(int fingerCount) {
