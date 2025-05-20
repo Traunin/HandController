@@ -8,16 +8,22 @@
 #define BEND_PIN A7
 #define FORCE_PIN A4
 
+// initializing a finger
 Finger finger(FINGER_SERVO, MIN_ANGLE, MAX_ANGLE);
 
 void setup() {
+  // bend sensor
   finger.attachBend(BEND_PIN);
+  // tactile servo
   finger.attachTactile(TACTILE_SERVO);
+  // force sensor
   finger.attachForce(FORCE_PIN);
   Serial.begin(9600);
 }
 
 void loop() {
-    finger.tick();
-    Serial.print(finger.getBend()); Serial.print(" "); Serial.println(finger.getForce());
+  // call tick to read sensor values  
+  finger.tick();
+  // print sensor values to serial
+  Serial.print(finger.getBend()); Serial.print(" "); Serial.println(finger.getForce());
 }
