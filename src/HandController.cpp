@@ -47,6 +47,7 @@ void Hand::tick() {
 }
 
 void Hand::logBend() {
+    Serial.print("bend ");
     for (int i = 0; i < count; i++) {
         if (fingers[i]) {
             int bend = fingers[i]->getBend();
@@ -65,6 +66,7 @@ void Hand::logBend() {
 }
 
 void Hand::logForce() {
+    Serial.print("force ");
     for (int i = 0; i < count; i++) {
         if (fingers[i]) {
             int force = fingers[i]->getForce();
