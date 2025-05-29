@@ -53,8 +53,9 @@ void Hand::logBend() {
             int bend = fingers[i]->getBend();
             if (bend >= 0) {
                 Serial.print(bend);
+            } else {
+                Serial.print("no bend sensor");
             }
-            Serial.print("no bend sensor");
         } else {
             Serial.print("no finger");
         }
