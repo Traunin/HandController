@@ -11,7 +11,7 @@ void Finger::attachBend(int pin) {
     hasBend = true;
     bendPin = pin;
     pinMode(pin, INPUT);
-    force = analogRead(pin);
+    bend = analogRead(pin);
 }
 
 void Finger::attachForce(int pin) {
