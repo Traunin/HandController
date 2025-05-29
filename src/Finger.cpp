@@ -3,6 +3,7 @@
 
 Finger::Finger(int servoPin, int min, int max) {
     finger.attach(servoPin);
+    finger.write(min);
     maxBend = max;
     minBend = min;
 }
