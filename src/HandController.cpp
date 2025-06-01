@@ -35,7 +35,10 @@ void Hand::setFromSerial() {
         fingers[i]->setBend(angle);
     }
 
-    Serial.readString();
+    // clear the rest
+    while (Serial.available()) {
+        Serial.read();
+    }
 }
 
 void Hand::tick() {
