@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <Finger.h>
+#include "Finger.h"
 
 Finger::Finger(int servoPin, int min, int max) {
     finger.attach(servoPin);
