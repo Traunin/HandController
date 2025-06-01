@@ -20,8 +20,8 @@ private:
     float forceK;
     float bendK;
     long current;
-    long lastTick;
-    int tickDelay;
+    long lastTick = 0;
+    int tickDelay = 50;
     void updateForce(int newForce);
     void updateBend(int newBend);
     void updateTactile();
