@@ -12,14 +12,14 @@ void setup() {
   finger3 = new Finger(9, 90, 160);
 
   // attaching bend sensors
-  finger1->attachBend(A7);
-  finger2->attachBend(A6);
-  finger3->attachBend(A5);
+  finger1->attachBend(A7, 0.9);
+  finger2->attachBend(A6, 0.9);
+  finger3->attachBend(A5, 0.9);
 
   // attaching force sensors
-  finger1->attachForce(A4);
-  finger2->attachForce(A3);
-  finger3->attachForce(A2);
+  finger1->attachForce(A4, 0.9);
+  finger2->attachForce(A3, 0.9);
+  finger3->attachForce(A2, 0.9);
   
   // joining fingers into a hand
   hand.setFinger(0, finger1);

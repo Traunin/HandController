@@ -2,10 +2,6 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define LOG_DELAY 50
-#define FORCE_K 0.5
-#define BEND_K 0.5
-
 class Finger {
 private:
     Servo finger;
@@ -21,17 +17,21 @@ private:
     int force;
     int lastForce;
     int tactileForce;
+    float forceK;
+    float bendK;
     long current;
     long lastTick;
+    int tickDelay;
     void updateForce(int newForce);
     void updateBend(int newBend);
     void updateTactile();
 
 public:
     Finger(int servoPin, int min, int max);
-    void attachBend(int pin);
+    void attachBend(int pin, float k);
     void attachTactile(int pin);
-    void attachForce(int pin);
+    void attachForce(int pin, float k);
+    void setTickDelay(int newTickDelay);
 
     void setBend(unsigned char angle);
 

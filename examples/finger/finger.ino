@@ -15,12 +15,12 @@ Finger* finger;
 void setup() {
   // attach finger servo
   finger = new Finger(FINGER_SERVO, MIN_ANGLE, MAX_ANGLE);
-  // bend sensor
-  finger->attachBend(BEND_PIN);
+  // bend sensor, pin and exponential smoothing coeff
+  finger->attachBend(BEND_PIN, 0.9);
   // tactile servo
   finger->attachTactile(TACTILE_SERVO);
-  // force sensor
-  finger->attachForce(FORCE_PIN);
+  // force sensor, pin and exponential smoothing coeff
+  finger->attachForce(FORCE_PIN, 0.9);
   Serial.begin(9600);
 }
 

@@ -8,18 +8,20 @@ Finger::Finger(int servoPin, int min, int max) {
     minBend = min;
 }
 
-void Finger::attachBend(int pin) {
+void Finger::attachBend(int pin, float k) {
     hasBend = true;
     bendPin = pin;
     pinMode(pin, INPUT);
     bend = analogRead(pin);
+    bendK = k;
 }
 
-void Finger::attachForce(int pin) {
+void Finger::attachForce(int pin, float k) {
     hasForce = true;
     forcePin = pin;
     pinMode(pin, INPUT);
     force = analogRead(pin);
+    forceK = k;
 }
 
 void Finger::attachTactile(int pin) {
@@ -48,7 +50,7 @@ int Finger::getForce() {
 
 void Finger::tick() {
     current = millis();
-    if (current - lastTick > LOG_DELAY) {
+    if (current - lastTick > tickDelay) {
         lastTick = current;
         if (hasForce) {
             updateForce(analogRead(forcePin));
@@ -63,11 +65,11 @@ void Finger::tick() {
 }
 
 void Finger::updateForce(int newForce) {
-    force += (int) ((newForce - force) * FORCE_K);
+    force += (int) ((newForce - force) * forceK);
 }
 
 void Finger::updateBend(int newBend) {
-    bend += (int) ((newBend - bend) * BEND_K);
+    bend += (int) ((newBend - bend) * bendK);
 }
 
 void Finger::updateTactile() {
@@ -78,3 +80,7 @@ void Finger::updateTactile() {
     }
     lastForce = force;
 }
+
+void Finger::setTickDelay(int newTickDelay) {
+    tickDelay = newTickDelay;
+} 
