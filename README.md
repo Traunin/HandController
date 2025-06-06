@@ -1,11 +1,11 @@
 # HandController
 This is a library for controlling Arduino prosthetic hands based on [this design](https://www.hardware-x.com/article/S2468-0672(20)30009-2/fulltext)
 
-Thus libbrary supports 
+This library supports 
 * Any number of fingers
 * Tactile sensors
 * Bend sensors
-* tactile response servos 
+* Tactile response servos 
 
 Examples can be found in the `examples` folder
 
